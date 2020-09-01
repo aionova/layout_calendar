@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -18,23 +20,23 @@ $w: 100px;
   flex-wrap: wrap;
   width: $w * 7 + 7;
   margin: 50px auto;
-}
 
-.calendar div {
-  width: 100px;
-  height: 100px;
-  background-color: #eee;
-  border: 1px solid black;
-  margin: 0 1px 1px 0;
-  cursor: pointer;
-  text-align: center;
-  line-height: $w;
-  transition: all ease-in-out 0.5s;
-}
+  .calendar div {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px solid black;
+    margin: 0 1px 1px 0;
+    cursor: pointer;
+    text-align: center;
+    line-height: $w;
+    transition: all ease-in-out 0.5s;
+  }
 
-.calendar div:hover {
-  background-color: #ffbfca;
-  transform: translateY(-20px);
+  .calendar div:hover {
+    background-color: #ffbfca;
+    transform: translateY(-20px);
+  }
 }
 
 $month-length: (
