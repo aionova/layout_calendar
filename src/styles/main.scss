@@ -21,7 +21,7 @@ $w: 100px;
   width: $w * 7 + 7;
   margin: 50px auto;
 
-  & > div {
+  > div {
     text-align: center;
     line-height: $w;
 
@@ -75,6 +75,9 @@ $first-day: (
     display: none;
   }
   .#{$name} div:nth-child(#{$days + 2}) {
+    display: none;
+  }
+  .#{$name} div:nth-child(#{$days + 3}) {
     display: none;
   }
 }
