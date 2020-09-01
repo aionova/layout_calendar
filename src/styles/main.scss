@@ -1,3 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+}
+
 body {
   margin: 0;
+}
+
+$w: 100px;
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: $w * 7 + 7;
+  margin: 50px auto;
+
+  .calendar div {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px solid black;
+    margin: 0 1px 1px 0;
+    cursor: pointer;
+    text-align: center;
+    line-height: $w;
+    transition: all ease-in-out 0.5s;
+  }
+  
+  .calendar div:hover {
+    background-color: #ffbfca;
+    transform: translateY(-20px);
+  }
+}
+
+$month-length: (
+  calendar-29: 29,
+  calendar-30: 30,
+  calendar-31: 31,
+);
+
+$first-day: (
+  calendar-mon: 0,
+  calendar-tue: 1,
+  calendar-wed: 2,
+  calendar-thu: 3,
+  calendar-fri: 4,
+  calendar-sat: 5,
+  calendar-sun: 6,
+);
+
+@for $i from 1 through 31 {
+  .calendar div:nth-child(#{$i}) {
+    &::after {
+      content: "#{$i}";
+    }
+  }
+}
+
+@each $name, $day in $first-day {
+  .#{$name} div:first-child {
+    margin-left: $day * 101px;
+  }
+}
+
+@each $name, $days in $month-length {
+  .#{$name} div:nth-child(#{$days + 1}) {
+    display: none;
+  }
+  .#{$name} div:nth-child(#{$days + 2}) {
+    display: none;
+  }
 }
