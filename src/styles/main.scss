@@ -1,3 +1,6 @@
+$block-width: 100px;
+$gap: 1px;
+
 *,
 *::before,
 *::after {
@@ -13,24 +16,22 @@ body {
   margin: 0;
 }
 
-$w: 100px;
-
 .calendar {
   display: flex;
   flex-wrap: wrap;
-  width: $w * 7 + 7;
+  width: ($block-width * 7) + (7 * $gap);
   margin: 50px auto;
 
   > div {
     text-align: center;
-    line-height: $w;
+    line-height: $block-width;
 
-    width: 100px;
-    height: 100px;
+    width: $block-width;
+    height: $block-width;
     
     background-color: #eee;
     border: 1px solid black;
-    margin: 0 1px 1px 0;
+    margin: 0 $gap $gap 0;
     cursor: pointer;
     transition: transform 0.5s, background-color 0.5s;
 
@@ -72,13 +73,9 @@ $first-day: (
 }
 
 @each $name, $days in $month-length {
-  .#{$name} div:nth-child(#{$days + 1}) {
-    display: none;
-  }
-  .#{$name} div:nth-child(#{$days + 2}) {
-    display: none;
-  }
+  .#{$name} div:nth-child(#{$days + 1}),
+  .#{$name} div:nth-child(#{$days + 2}),
   .#{$name} div:nth-child(#{$days + 3}) {
     display: none;
   }
-}
+}  
